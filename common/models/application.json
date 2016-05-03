@@ -1,0 +1,49 @@
+{
+    "name": "Application",
+    "base": "PersistedModel",
+    "idInjection": false,
+    "properties": {
+        "id": {
+            "type": "String",
+            "id": true,
+            "length": 20
+        },
+        "moteId": {
+            "type": "String",
+            "length": 20
+        },
+        "type": {
+            "type": "String",
+            "length": 20
+        },
+        "location": {
+            "type": "String",
+            "length": 20
+        },
+        "path": {
+            "type": "String",
+            "length": 20
+        },
+        "lastC": {
+            "type": "String",
+            "length": 20
+        },
+        "directC": {
+            "type": "String",
+            "length": 20
+        }
+    },
+    "validations": [],
+    "relations": {
+        "content": {
+            "type": "hasMany",
+            "model": "Content"
+        },
+        "mote": {
+            "type": "belongsTo",
+            "model": "Mote"
+        }
+    },
+    "acls": [],
+    "methods": []
+}

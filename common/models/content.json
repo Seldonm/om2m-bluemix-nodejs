@@ -1,0 +1,36 @@
+{
+  "name": "Content",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "properties": {
+    "id": {
+      "type": "String",
+      "id": true,"length": 20
+},
+
+    "appId": {
+      "type": "String",
+      "length": 20
+    },
+    "creationTime": {
+      "type": "Date"      
+    },
+    "name": {
+      "type": "String",
+      "length": 20
+    },
+    "value": {
+      "type": "String",
+      "length": 20
+    }
+  },
+  "validations": [],
+  "relations": { 
+    "application": {
+      "type": "belongsTo",
+      "model": "Application"      
+    }
+    },
+  "acls": [],
+  "methods": []
+}

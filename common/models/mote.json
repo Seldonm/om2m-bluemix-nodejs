@@ -1,0 +1,21 @@
+{
+  "name": "Mote",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "properties": {
+    "id": {
+      "type": "String",
+      "id": true,
+      "length": 20
+    }
+  },
+  "validations": [],
+  "relations": {
+    "applications": {
+      "type": "hasMany",
+      "model": "Application"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

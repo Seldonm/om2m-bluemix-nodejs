@@ -1,0 +1,38 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongoDB": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "database": "db",
+    "connector": "mongodb"
+  },
+  "om2mdata": {
+    "host": "http://193.204.50.185",
+    "port": 8181,
+    "password": "admin",
+    "name": "om2mdata",
+    "user": "admin",
+    "connector": "rest",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "http://193.204.50.185:8181/o/{!q}",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json",
+            "Authorization": "Basic YWRtaW46YWRtaW4="
+          }
+        },
+        "functions": {
+          "getdata": [
+            "q"
+          ]
+        }
+      }
+    ]
+  }
+}

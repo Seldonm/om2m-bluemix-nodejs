@@ -1,0 +1,41 @@
+{
+    "db": {
+        "name": "db",
+        "connector": "memory"
+    },
+    "mongoDB": {
+        "host": "159.8.128.64",
+        "port": 10107,
+        "database": "db",
+        "url": "mongodb://815201aa-ef62-405b-a566-beefd6469f40:fb89430c-6f8c-4df6-8742-9d9955e3bc27@159.8.128.64:10107/db",
+        "username": "815201aa-ef62-405b-a566-beefd6469f40",
+        "password": "fb89430c-6f8c-4df6-8742-9d9955e3bc27",
+        "name": "a3e348ef-5aab-4885-b14e-4d4834bcba5d",
+        "connector": "mongodb"
+    },
+    "om2mdata": {
+        "host": "http://193.204.50.185",
+        "port": 8181,
+        "password": "admin",
+        "name": "om2mdata",
+        "user": "admin",
+        "connector": "rest",
+        "operations": [{
+            "template": {
+                "method": "GET",
+                "url": "http://193.204.50.185:8181/o/{!q}",
+                "timeout": 10000,
+                "headers": {
+                    "accepts": "application/json",
+                    "content-type": "application/json",
+                    "Authorization": "Basic YWRtaW46YWRtaW4="
+                }
+            },
+            "functions": {
+                "getdata": [
+                    "q"
+                ]
+            }
+        }]
+    }
+}
