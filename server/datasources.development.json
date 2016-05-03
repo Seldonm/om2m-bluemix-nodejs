@@ -1,0 +1,36 @@
+{
+    "db": {
+        "name": "db",
+        "connector": "memory"
+    },
+    "mongoDB": {
+        "hostname": "localhost",
+        "host": "localhost",
+        "port": 27017,
+        "username": "",
+        "password": "",
+        "name": "",
+        "database": "db",
+        "url": "mongodb://localhost:27017/db",
+        "connector": "mongodb"
+    },
+
+    "om2mdata": {        
+        "connector": "rest",
+        "operations": [{
+            "template": {
+                "method": "GET",                
+                "timeout": 10000,
+                "headers": {
+                    "accepts": "application/json",
+                    "content-type": "application/json",                   
+                }
+            },
+            "functions": {
+                "getdata": [
+                    "q"
+                ]
+            }
+        }]
+    }
+}

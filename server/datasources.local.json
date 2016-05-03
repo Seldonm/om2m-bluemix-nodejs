@@ -1,0 +1,29 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongoDB": {
+    "database": "db",
+    "connector": "mongodb"
+  },
+  "om2mdata": {
+    "connector": "rest",
+    "operations": [
+      {
+        "template": {
+          "method": "GET",          
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"            
+          }
+        },
+        "functions": {
+          "getdata": [
+            "q"
+          ]
+        }
+      }
+    ]
+  }
+}

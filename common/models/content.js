@@ -49,33 +49,6 @@ module.exports = function(Content) {
 
             });
 
-
-
-        // Controller.getdata('gscl/applications/' + appId + '/containers/D/contentInstances')
-        //     .then(function(results) {
-        //         var contentList = Controller.collectiontoJSON(results);
-        //         console.log("App :" + appId + " Number of instance: " + contentList.currentNrOfInstances);
-        //         Promise.map(contentList.contentInstanceCollection.contentInstance, function(instance) {
-
-        //                 var c = Controller.base64toJSON(instance.content._);
-        //                 var id = instance.$.id;
-        //                 var cTime = instance.creationTime;
-        //                 return Promise.resolve(upsertContent(appId, id, c, cTime))
-        //                     .reflect();
-        //             })
-        //             .each(function(inspection) {
-        //                 if (inspection.isFulfilled()) {
-        //                     console.log("Content upserted with ID: ", inspection.value().id);
-        //                 } else {
-        //                     console.error("Error upserting content: ", inspection.reason());
-        //                 }
-        //             })
-        //             .catch(function(err) {
-        //                 console.log(err)
-        //             });
-        //     });
-
-
     };
 
     Content.remoteMethod(

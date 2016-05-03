@@ -1,0 +1,26 @@
+{
+    "db": {
+        "name": "db",
+        "connector": "memory"
+    },
+    "mongoDB": {       
+    },
+    "om2mdata": {       
+        "connector": "rest",
+        "operations": [{
+            "template": {
+                "method": "GET",               
+                "timeout": 10000,
+                "headers": {
+                    "accepts": "application/json",
+                    "content-type": "application/json"
+                }
+            },
+            "functions": {
+                "getdata": [
+                    "q"
+                ]
+            }
+        }]
+    }
+}
