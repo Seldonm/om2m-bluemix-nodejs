@@ -1,0 +1,89 @@
+<md-card flex="noshrink">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{moteLocation}}</span>
+                <span class="md-subhead">{{motePath}}</span>
+            </md-card-title-text>
+        </md-card-title>       
+        <md-card-content flex layout="column" >
+            <div class="md-media-md card-media">
+                <img ng-src="../img/mote/openmote.png" class="img-responsive md-media-md" alt="image caption">
+            </div>    
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Sensors Available</span> 
+                    <span class="md-subhead">Click on each icon to poll the sensors </span>    
+                </md-card-title-text>
+            </md-card-title>        
+            <md-card-actions layout="column" flex="100">
+                <div flex layout layout-align="center center" ng-repeat="app in apps" layout-margin>
+                    <div>
+                        <md-button ng-switch="app.type" ng-click="getDirect(app.id)" class="md-fab" aria-label="hidden">
+                            <md-icon class="md-primary" ng-switch-when="Acceleration-Sensor">&#xE8E4;</md-icon>
+                            <md-icon class="md-primary" ng-switch-when="Humidity-Sensor">&#xE91C;</md-icon>
+                            <md-icon class="md-primary" ng-switch-when="Luminosity-Sensor">&#xE90F;</md-icon>
+                            <md-icon class="md-primary" ng-switch-when="Temperature-Sensor">&#xEB3B;</md-icon>
+                        </md-button>
+                    </div>
+                    <div>
+                        <span class="md-subhead">{{app.type}}</span>
+                    </div>
+                    <div flex layout="column">
+                    <div flex ng-class="{sensorerror: appStatus[app.id]=='Offline'}">{{appStatus[app.id]}}</div>
+                    <div ng-if="appStatus[app.id]==''">
+                    <span class="md-subhead"></span></div>
+                    <div flex>
+                        <md-progress-linear class="md-warn" md-mode="{{pollBar[app.id]}}"></md-progress-linear>
+                    </div>
+                    </div>
+                </div>
+            </md-card-actions>  
+       <!--      </div> -->    
+        </md-card-content>            
+    </md-card>
+
+    <md-divider></md-divider>
+    
+    <md-card flex="noshrink">
+    <md-card-header>
+        <md-card-header-text>
+            <span class="md-title">Most Recent Values</span>
+            <span class="md-subhead">Table</span>
+        </md-card-header-text>
+    </md-card-header>
+    <md-card-content>
+        <md-table-container ng-if="dataTable.length">
+            <table md-table>
+                <thead md-head>
+                    <tr md-row>
+                        <th md-column>Date</th>
+                        <th md-column ng-repeat="app in apps | orderBy:'-id'">{{app.id | limitTo:1 | printLabel}}</th>
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr md-row ng-repeat="(date,value) in filterResults()">
+                        <td md-cell>{{date}}</td>
+                        <td md-cell ng-repeat="app in apps | orderBy:'-id'">
+                            {{value | orderBy:'-name'| groupBy: 'name' | hasType : app.id}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+        <h3 class=".md-headline" ng-if="!dataTable.length">Data not available</h3>
+    </md-card-content>
+</md-card>
+
+<md-divider></md-divider>
+
+    <md-card flex="noshrink">
+    <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Charts</span>
+            </md-card-title-text>
+        </md-card-title>
+    <md-card-content layout="column">
+       <highchart ng-repeat="chart in charts" id="chart.series.id" config="chart" ng-if="dataCharts.length"></highchart>            
+            <h3 class=".md-headline" ng-if="!dataTable.length">Charts not available</h3>
+    </md-card-content>
+    </md-card>

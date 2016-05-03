@@ -1,0 +1,18 @@
+<md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z1 md-primary" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+    <md-content>        
+    </md-content>
+    <md-content layout layout-align "center center">
+        <span flex></span>
+        <md-icon>&#xE63E;</md-icon>
+        <h1 flex class="menu-head md-subhead">Mote List</h1>
+        <span flex>
+       </span>
+    </md-content>
+    <md-list layout="column">
+     <md-button ng-repeat="mote in motes" ng-click="closeSidenav('left')" class="md-flat" ui-sref="display({moteId:mote.moteId})">
+        <md-list-item>           
+                {{mote.location}} : <span style="text-transform: lowercase">{{mote.path}}</span>      
+        </md-list-item>
+    </md-button>
+    </md-list>
+</md-sidenav>
